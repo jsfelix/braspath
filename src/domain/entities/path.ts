@@ -1,6 +1,6 @@
-import { Entity } from '@/shared/entities/entity'
-import { Optional } from '@/shared/types/optional'
+import { Entity } from '@/domain/entities/entity'
 
+import { Optional } from '../types/optional'
 import { City } from './city'
 import { EndCityReachedError } from './errors/end-city-reached-error'
 import { NotBoundaryCityError } from './errors/not-boundary-city-error'

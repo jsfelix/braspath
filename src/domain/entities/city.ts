@@ -1,6 +1,6 @@
-import { Entity } from '@/shared/entities/entity'
-import { Optional } from '@/shared/types/optional'
+import { Entity } from '@/domain/entities/entity'
 
+import { Optional } from '../types/optional'
 import { Id } from './id'
 
 interface BoundaryCity {

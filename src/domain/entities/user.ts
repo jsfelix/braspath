@@ -1,4 +1,4 @@
-import { Entity } from '@/shared/entities/entity'
+import { Entity } from '@/domain/entities/entity'
 
 import { Id } from './id'
 
