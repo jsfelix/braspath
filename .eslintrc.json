@@ -3,6 +3,7 @@
   "plugins": ["eslint-plugin-import-helpers"],
   "rules": {
     "no-use-before-define": "off",
+    "no-useless-constructor": "off",
     "import-helpers/order-imports": [
       "warn",
       {

@@ -4,21 +4,36 @@ import { JSONCityRepository } from './application/repositories/json-city-reposit
 import { Id } from './domain/entities/id'
 import { Path } from './domain/entities/path'
 import { User } from './domain/entities/user'
+import { GetShortestDistanceUseCase } from './domain/use-cases/get-shortest-distance'
 
 const cityRepository = new JSONCityRepository()
 
-function question(path: Path) {
+async function question(path: Path) {
   const rl = readline.createInterface(process.stdin, process.stdout)
   const lastCity = path.cities[path.cities.length - 1]
+  const getShortestDistance = new GetShortestDistanceUseCase(cityRepository)
+  const { distance, path: minPath } = await getShortestDistance.execute({
+    idA: lastCity.id.value,
+    idB: path.endCity.id.value,
+  })
   console.log('Cidade inicial:', path.startCity.fullName)
   console.log('Cidade destino:', path.endCity.fullName)
-  console.log(`Você está em \x1b[33m ${lastCity.fullName} \x1b[0m`)
+  console.log(`Você está em \x1b[33m${lastCity.fullName} \x1b[0m`)
   console.log('')
   console.log('Distância percorrida:', Math.round(path.distance), 'km')
   console.log(
-    'Distância até o destino',
-    Math.round(lastCity.distanceTo(path.endCity)),
-    'km',
+    'Distância mínima até o destino:',
+    Math.round(distance),
+    'km em',
+    minPath.length - 1,
+    `passo${minPath.length - 1 > 1 ? 's' : ''}`,
+  )
+  console.log(
+    'Continue assim e termine o trajeto com',
+    Math.round(distance + path.distance),
+    'km em',
+    path.cities.length + minPath.length - 2,
+    `passo${path.cities.length + minPath.length - 2 > 1 ? 's' : ''}!`,
   )
   console.log()
   console.log('Opções para a próxima cidade:')

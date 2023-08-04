@@ -1,8 +1,7 @@
+import json from '@/../.data/cities.json'
+import { City } from '@/domain/entities/city'
+import { Id } from '@/domain/entities/id'
 import { CityRepository } from '@/domain/repositories/city-repository'
-
-import json from '../../../.data/cities.json'
-import { City } from '../../domain/entities/city'
-import { Id } from '../../domain/entities/id'
 
 type CityJSON = {
   id: string
