@@ -5,5 +5,6 @@ describe('User', () => {
     const user = User.create({ name: 'John Doe', email: 'johndoe@email.com' })
     expect(user.id.value).toBeTruthy()
     expect(user.name).toEqual('John Doe')
+    expect(user.email).toEqual('johndoe@email.com')
   })
 })
